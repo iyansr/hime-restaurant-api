@@ -87,7 +87,7 @@ class FoodController {
 			const { name, category, price } = req.body
 			const { errors, isValid } = validateFoodInput(req.body)
 
-			const { image } = req.files || req.body || undefined
+			const { image } = req.files || req.body || {}
 
 			if (!image) {
 				errors.image = 'Image Cannot Empty'
