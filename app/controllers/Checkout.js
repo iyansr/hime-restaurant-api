@@ -29,6 +29,7 @@ class CheckOutController {
 				attributes: {
 					exclude: ['food_id'],
 				},
+				order: [['createdAt', 'DESC']],
 			})
 
 			const parsedCheckOut = JSON.parse(JSON.stringify(checkout))
@@ -66,7 +67,10 @@ class CheckOutController {
 				return {
 					checkout_id: res.checkout_id,
 					total: totalppn,
-					foods: res.food,
+					foods: res.food.filter(
+						(item, index, self) => self.indexOf(item) === index
+					),
+					quantity: res.quantity,
 					createdAt: res.createdAt,
 				}
 			})

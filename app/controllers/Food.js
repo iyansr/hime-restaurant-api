@@ -128,6 +128,87 @@ class FoodController {
 			})
 		}
 	}
+
+	static async editFood(req, res) {
+		try {
+			const foodFind = await Food.findByPk(req.params.id)
+
+			if (!foodFind) {
+				return errorResponse(res, 404, 'Not found', 'Cannot find food')
+			}
+			const { name, category, price } = req.body
+			const { errors, isValid } = validateFoodInput(req.body)
+
+			const { image } = req.files || req.body || {}
+
+			if (!image) {
+				errors.image = 'Image Cannot Empty'
+				image.tempFilePath && fs.unlinkSync(image.tempFilePath)
+			}
+
+			if (!isValid || !image) {
+				image.tempFilePath && fs.unlinkSync(image.tempFilePath)
+				return errorResponse(res, 400, 'Bad request', {
+					...errors,
+				})
+			}
+
+			let tempFilePath = image.tempFilePath && image.tempFilePath
+			const imageString = req.body.image && image
+
+			if (tempFilePath) {
+				const upload = await cloudinary.uploader.upload(tempFilePath, {
+					folder: 'upload/hime_food/image',
+					transformation: { quality: 80 },
+				})
+				tempFilePath = upload.url
+			}
+			const finalImage = tempFilePath || imageString
+
+			const food = await Food.update(
+				{
+					name,
+					category,
+					image: finalImage,
+					price,
+				},
+				{ where: { id: req.params.id } }
+			)
+			image.tempFilePath && fs.unlinkSync(image.tempFilePath)
+			res.json({ code: 200, status: 'OK', food })
+		} catch (error) {
+			console.log(error)
+			return res.status(500).json({
+				message: 'Internal Server Error',
+			})
+		}
+	}
+
+	static async delete(req, res) {
+		try {
+			const food = await Food.findByPk(req.params.id)
+
+			if (!food) {
+				return errorResponse(res, 404, 'Not found', 'Cannot find food')
+			}
+			const destroy = await Food.destroy({ where: { id: req.params.id } })
+
+			if (!destroy) {
+				return errorResponse(res, 400, 'Bad Request', 'Cannot Delete')
+			}
+
+			res.json({
+				code: 200,
+				status: 'OK',
+				message: 'Success delete food',
+			})
+		} catch (error) {
+			console.log(error)
+			return res.status(500).json({
+				message: 'Internal Server Error',
+			})
+		}
+	}
 }
 
 module.exports = FoodController
