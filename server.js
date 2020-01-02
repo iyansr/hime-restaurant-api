@@ -3,7 +3,7 @@ const express = require('express')
 const http = require('http')
 const router = require('./app/routes')
 const fileUploads = require('express-fileupload')
-const morgan = require('morgan')
+// const morgan = require('morgan')
 const cors = require('cors')
 
 const db = require('./configs/db')
@@ -11,7 +11,7 @@ const server = express()
 const PORT = process.env.PORT || 9300
 
 server.use(cors())
-server.use(morgan('dev'))
+// server.use(morgan('dev'))
 server.use(express.static('./public'))
 server.use(
 	fileUploads({
