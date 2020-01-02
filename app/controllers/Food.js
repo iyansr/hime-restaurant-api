@@ -8,7 +8,7 @@ const fs = require('fs')
 
 class FoodController {
 	static async getAllFood(req, res) {
-		let { name, category, price, limit, page = 1 } = req.query
+		let { name, category, price, limit, order = 'ASC', page = 1 } = req.query
 		let conditions = {}
 
 		if (name) {
@@ -23,7 +23,7 @@ class FoodController {
 		if (category) {
 			conditions.where = {
 				...conditions.where,
-				category: { ...conditions.where, category },
+				category,
 			}
 		}
 
@@ -61,6 +61,7 @@ class FoodController {
 					exclude: ['category', 'createdAt', 'updatedAt'],
 				},
 				...conditions,
+				order: [['price', order || 'ASC']],
 			})
 
 			if (!foods.rows.length > 0) {
