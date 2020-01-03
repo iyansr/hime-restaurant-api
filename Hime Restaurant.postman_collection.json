@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "ea664ef1-81c8-42f9-8770-e914d972f55b",
+		"name": "Hime Restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET ALL FOOD",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/food?limit=6&page=1&category=49267808-a055-480f-a82b-aa1036899c42&price=10000;30000&order=ASC&name=tako",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"food"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "6"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "category",
+							"value": "49267808-a055-480f-a82b-aa1036899c42"
+						},
+						{
+							"key": "price",
+							"value": "10000;30000"
+						},
+						{
+							"key": "order",
+							"value": "ASC"
+						},
+						{
+							"key": "name",
+							"value": "tako"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD CATEGORY",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Other Food",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/category",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD FOOD",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Matcha Latte",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "49267808-a055-480f-a82b-aa1036899c42",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "20000",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"type": "file",
+							"src": []
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/food",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"food"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@himefood.co",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "himefoodadmin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@himefood.c",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "himefoodadmin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/user/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ADD CHECKOUT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "check",
+							"value": "[{\"checkout_id\":\"#sadasjkdan\",\"food_id\":\"c803f2bd-7124-45eb-978b-122014fb0e99\",\"price\":22000,\"quantity\":1,\"total\":22000},{\"checkout_id\":\"#sadasjkdan\",\"food_id\":\"594e7a11-92fd-4047-8115-bda252d44364\",\"price\":16000,\"quantity\":4,\"total\":64000}]",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{url}}/checkout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE FOOD",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/food/35d7e3d4-e313-4527-8818-34c8de5b2b0a",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"food",
+						"35d7e3d4-e313-4527-8818-34c8de5b2b0a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET RECENT TRANSACTION",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/checkout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET CHART DATA",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/checkout/chart",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"checkout",
+						"chart"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
