@@ -121,6 +121,7 @@ Related project : [Hime Restaurant Point Of Sales Frontend](https://github.com/i
     - category : String | Required
     - price : Number | Required
     - image : String or Blob | Required
+  
 
 - `api/food/:id`
   - Edit food
@@ -131,6 +132,9 @@ Related project : [Hime Restaurant Point Of Sales Frontend](https://github.com/i
     - category : String | Required
     - price : Number | Required
     - image : String or Blob | Required
+  - Params : 
+    - id : String | Required
+  - Example : `api/food/35d7e3d4-e313-4527-8818-34c8de5b2b0a`
 
 - `api/food/:id`
   - Delete food by id
