@@ -122,7 +122,7 @@ Related project : [Hime Restaurant Point Of Sales Frontend](https://github.com/i
     - price : Number | Required
     - image : String or Blob | Required
 
-- `api/food:id`
+- `api/food/:id`
   - Edit food
   - Method : PATCH
   - Header : `Content-Type : multipart/form-data`
