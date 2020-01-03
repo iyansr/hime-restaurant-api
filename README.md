@@ -4,6 +4,8 @@ Point of Sales System API build with Node JS Express and MySQL with Sequelize OR
 
 Deployed on Heroku [Link](https://intense-inlet-23820.herokuapp.com/)
 
+Related project : [Hime Restaurant Point Of Sales Frontend](https://github.com/iyansr/hime-restaurant)
+
 <div align='center'>
   <img src='https://res.cloudinary.com/iyansrcloud/image/upload/v1578034806/screenshot/Home_si6d6r.png' width='800'  />
 
