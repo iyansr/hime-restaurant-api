@@ -37,7 +37,7 @@ Deployed on Heroku [Link](https://intense-inlet-23820.herokuapp.com/)
 
 
 
-- Clone Repository `git clone https://github.com/iyansr/hime-restaurant.git`
+- Clone Repository `git clone https://github.com/iyansr/hime-restaurant-api.git`
 
 - Make the `.env` file or you can copy from `.env.sample`
 
